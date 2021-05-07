@@ -1,0 +1,33 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Index</title>  
+</head>  
+<body>  
+<h2>Book collection</h2>  
+<form method="post">
+{% csrf_token %}
+
+<table class="table">
+<tr><th>SL No</th><th>bookname</th><th>author</th><th>count</th></tr>
+{% for data in BookList %}
+<tr><td>{{ data.id}}</td><td>{{ data.bookname}}</td><td>{{data.author}}</td><td>{{data.count}}</td></tr>
+{% endfor %}
+</table>
+<button type="submit" id="submitbutton" class="btn btn-primary my-3">Borrow book</button>
+Book Name<input type="text" id="bookname" name="bookname" placeholder="Enter  Sl No to borrow"><br><br>
+<h2>Borrowed Book </h2>
+<table class="table">
+<tr><th>bookname</th><th>Date</th></tr>
+{% for data in Borrowedbook %}
+<tr><td>{{ data.bookname}}</td><td>{{data.date}}</td></tr>
+{% endfor %}
+</table>
+
+</form>
+</body>  
+</html>  
